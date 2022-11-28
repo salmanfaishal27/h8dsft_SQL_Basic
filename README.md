@@ -103,7 +103,6 @@ SELECT *
 FROM courses
 LEFT JOIN teachers on teachers.id = courses.teachers_id
 ```
-![image](https://user-images.githubusercontent.com/57296740/204312958-fbc8ba8b-5de8-4543-86ac-9c820c7e81e6.png)
 
 # Case 2 : Display how many courses per universities
 
@@ -113,7 +112,6 @@ FROM courses
 left join teachers ON teachers.id=courses.teachers_id
 GROUP by school
 ```
-![image](https://user-images.githubusercontent.com/57296740/204313077-d72fe284-9f47-4c27-a1e1-fb39c8b75cb8.png)
 
 # Case 3 : Display how many total_students per teachers
 
@@ -123,7 +121,6 @@ FROM courses
 left join teachers ON teachers.id=courses.teachers_id
 GROUP by first_name,last_name
 ```
-![Uploading image.png…]()
 
 # Case 4 : Display how many courses per teachers
 
@@ -133,5 +130,4 @@ FROM courses
 left join teachers ON teachers.id=courses.teachers_id
 GROUP by first_name,last_name
 ```
-![Uploading image.png…]()
-           
+
