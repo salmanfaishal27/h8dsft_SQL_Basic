@@ -1,4 +1,3 @@
-```sql
 CREATE TABLE teachers (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     first_name varchar(25) NOT NULL,
@@ -52,67 +51,44 @@ INSERT INTO courses (name, teachers_id, total_students)
             ('Calculus', 12, 34),
             ('Physics', 13, 34),
             ('Biology', 14, 25),
-            ('Calculus', 15, 20); ```
-
-#query         
-```sql
+            ('Calculus', 15, 20);
+            
 SELECT *
 FROM teachers
 LEFT JOIN courses on teachers.id = courses.teachers_id
 WHERE salary IN (SELECT MAX(salary) FROM teachers JOIN courses ON teachers.id = courses.teachers_id GROUP by name)
-GROUP BY name asc```
+GROUP BY name asc
 
-#1 Group By
-Case 1 : Who is the teacher with the highest salary for each university ?
-
-```sql
 SELECT *
 FROM teachers
 LEFT JOIN courses on teachers.id = courses.teachers_id
 WHERE salary IN (SELECT MAX(salary) FROM teachers JOIN courses ON teachers.id = courses.teachers_id GROUP by school)
-GROUP BY school asc```
+GROUP BY school asc
 
-Case 2 : Who is the teacher with the highest salary from Standford University ?
-
-```sql
 SELECT *
 FROM teachers
 WHERE school = 'Standford University'
 ORDER by salary DESC
-limit 1```
+limit 1
 
-#2. Join
-
-Case 1 : Display all courses with teacher's identity
-
-```sql
 SELECT *
 FROM courses
-LEFT JOIN teachers on teachers.id = courses.teachers_id```
+LEFT JOIN teachers on teachers.id = courses.teachers_id
 
-Case 2 : Display how many courses per universities
-
-```sql
 SELECT school,COUNT(name)
 FROM courses
 left join teachers ON teachers.id=courses.teachers_id
-GROUP by school```
-
+GROUP by school
 #Case 3 : Display how many total_students per teachers
-
-```sql
 SELECT first_name,last_name,SUM(total_students)
 FROM courses
 left join teachers ON teachers.id=courses.teachers_id
-GROUP by first_name,last_name```
-
+GROUP by first_name,last_name
 #Case 4 : Display how many courses per teachers
-
-```sql
 SELECT first_name,last_name,COUNT(name)
 FROM courses
 left join teachers ON teachers.id=courses.teachers_id
-GROUP by first_name,last_name```
+GROUP by first_name,last_name
 
 
 
