@@ -23,7 +23,8 @@ INSERT INTO teachers (first_name, last_name, school, hire_date, salary)
            ('Jessica', 'Abbers', 'Standford University', '2005-01-30', 33000),
            ('Tom', 'Massi', 'Harvard University', '1999-09-09', 39500),
            ('Esteban', 'Brown', 'MIT', '2007-01-30', 36000),
-           ('Carlos', 'Alonso', 'Standford University', '2001-01-30', 44000);```
+           ('Carlos', 'Alonso', 'Standford University', '2001-01-30', 44000);
+```
            
 ```sql
 CREATE TABLE courses (
@@ -31,7 +32,8 @@ CREATE TABLE courses (
     name varchar(20),
     teachers_id INT,
     total_students INT
-    );```
+    );
+```
     
 ```sql
 INSERT INTO courses (name, teachers_id, total_students)
@@ -54,28 +56,37 @@ INSERT INTO courses (name, teachers_id, total_students)
             ('Calculus', 12, 34),
             ('Physics', 13, 34),
             ('Biology', 14, 25),
-            ('Calculus', 15, 20);```
-# query           
+            ('Calculus', 15, 20);
+```
+# query 
+
 ```sql
 SELECT *
 FROM teachers
 LEFT JOIN courses on teachers.id = courses.teachers_id
 WHERE salary IN (SELECT MAX(salary) FROM teachers JOIN courses ON teachers.id = courses.teachers_id GROUP by name)
-GROUP BY name asc```
+GROUP BY name asc
+
+```
 # Case 1 : Who is the teacher with the highest salary for each university ?
+
 ```sql
 SELECT *
 FROM teachers
 LEFT JOIN courses on teachers.id = courses.teachers_id
 WHERE salary IN (SELECT MAX(salary) FROM teachers JOIN courses ON teachers.id = courses.teachers_id GROUP by school)
-GROUP BY school asc```
+GROUP BY school asc
+
+```
 # Case 2 : Who is the teacher with the highest salary from Standford University ?
+
 ```sql
 SELECT *
 FROM teachers
 WHERE school = 'Standford University'
 ORDER by salary DESC
-limit 1```
+limit 1
+```
 
 # 2. Join
 # Case 1 : Display all courses with teacher's identity
@@ -83,7 +94,8 @@ limit 1```
 ```sql
 SELECT *
 FROM courses
-LEFT JOIN teachers on teachers.id = courses.teachers_id```
+LEFT JOIN teachers on teachers.id = courses.teachers_id
+```
 
 # Case 2 : Display how many courses per universities
 
@@ -91,7 +103,8 @@ LEFT JOIN teachers on teachers.id = courses.teachers_id```
 SELECT school,COUNT(name)
 FROM courses
 left join teachers ON teachers.id=courses.teachers_id
-GROUP by school```
+GROUP by school
+```
 
 # Case 3 : Display how many total_students per teachers
 
@@ -99,7 +112,8 @@ GROUP by school```
 SELECT first_name,last_name,SUM(total_students)
 FROM courses
 left join teachers ON teachers.id=courses.teachers_id
-GROUP by first_name,last_name```
+GROUP by first_name,last_name
+```
 
 # Case 4 : Display how many courses per teachers
 
@@ -107,7 +121,8 @@ GROUP by first_name,last_name```
 SELECT first_name,last_name,COUNT(name)
 FROM courses
 left join teachers ON teachers.id=courses.teachers_id
-GROUP by first_name,last_name```
+GROUP by first_name,last_name
+```
 
 
 
