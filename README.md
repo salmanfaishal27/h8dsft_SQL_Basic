@@ -68,7 +68,7 @@ WHERE salary IN (SELECT MAX(salary) FROM teachers JOIN courses ON teachers.id = 
 GROUP BY name asc
 
 ```
-# 1 Group By
+# 1. Group By
 # Case 1 : Who is the teacher with the highest salary for each university ?
 
 ```sql
