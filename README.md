@@ -82,6 +82,8 @@ WHERE salary IN (SELECT MAX(salary) FROM teachers JOIN courses ON teachers.id = 
 GROUP BY school asc
 
 ```
+![image](https://user-images.githubusercontent.com/57296740/204312387-8ecf6156-6d7b-4e51-a8a7-13f7898df14e.png)
+
 # Case 2 : Who is the teacher with the highest salary from Standford University ?
 
 ```sql
@@ -91,6 +93,7 @@ WHERE school = 'Standford University'
 ORDER by salary DESC
 limit 1
 ```
+![image](https://user-images.githubusercontent.com/57296740/204312582-02782213-6ce7-4ed2-a48e-6af5600bb937.png)
 
 # 2. Join
 # Case 1 : Display all courses with teacher's identity
@@ -100,6 +103,7 @@ SELECT *
 FROM courses
 LEFT JOIN teachers on teachers.id = courses.teachers_id
 ```
+![image](https://user-images.githubusercontent.com/57296740/204312958-fbc8ba8b-5de8-4543-86ac-9c820c7e81e6.png)
 
 # Case 2 : Display how many courses per universities
 
@@ -109,6 +113,7 @@ FROM courses
 left join teachers ON teachers.id=courses.teachers_id
 GROUP by school
 ```
+![image](https://user-images.githubusercontent.com/57296740/204313077-d72fe284-9f47-4c27-a1e1-fb39c8b75cb8.png)
 
 # Case 3 : Display how many total_students per teachers
 
@@ -118,6 +123,7 @@ FROM courses
 left join teachers ON teachers.id=courses.teachers_id
 GROUP by first_name,last_name
 ```
+![Uploading image.png…]()
 
 # Case 4 : Display how many courses per teachers
 
@@ -127,10 +133,5 @@ FROM courses
 left join teachers ON teachers.id=courses.teachers_id
 GROUP by first_name,last_name
 ```
-
-
-
-
-
-
-            
+![Uploading image.png…]()
+           
